@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "outDir": "dist",
+        "lib": ["es2015", "DOM"],
+        "jsx": "react-jsx",
+        "allowImportingTsExtensions": true,
+        "noEmit": true,
+        "moduleResolution": "node"
+  },
+  "include": ["./src/**/*"]
+}
