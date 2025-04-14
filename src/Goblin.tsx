@@ -23,7 +23,7 @@ function Goblin({ goblinName, initialHealth = 10 }: GoblinProps) {
           <p className="description">A horrible goblin.</p>
           <p className="health">Health: {health}/10</p>
           <button className="attack-button" onClick={modifyHealth}>
-            Attack {goblinName}.
+            Attack {goblinName} ⚔️
           </button>
         </>
       ) : (
