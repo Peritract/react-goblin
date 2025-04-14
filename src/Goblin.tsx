@@ -1,20 +1,36 @@
 import { useState } from "react";
+import "./index.css";
 
-function Goblin({ goblinName } : {goblinName: string }) {
-    const [health, setHealth] = useState(10);
+interface GoblinProps {
+  goblinName: string;
+  initialHealth?: number;
+}
 
-    const modifyHealth = () => {
-        setHealth(health - 1);
-    }
+function Goblin({ goblinName, initialHealth = 10 }: GoblinProps) {
+  const [health, setHealth] = useState(initialHealth);
 
-    return (
-        <div>
-        <h3>{goblinName}</h3>
-        <p>A horrible goblin.</p>
-        <p>{health}/10</p>
-        <button onClick={modifyHealth}>Attack</button>
-        </div>
-    );
+  const modifyHealth = () => {
+    if (health > 0) setHealth(health - 1);
+  };
+
+  const isDead = health <= 0;
+
+  return (
+    <div className="goblinContainer">
+      {!isDead ? (
+        <>
+          <h3 className="name">{goblinName}</h3>
+          <p className="description">A horrible goblin.</p>
+          <p className="health">Health: {health}/10</p>
+          <button className="attack-button" onClick={modifyHealth}>
+            Attack {goblinName}.
+          </button>
+        </>
+      ) : (
+        <h3 className="success">You have successfully slain {goblinName}!</h3>
+      )}
+    </div>
+  );
 }
 
 export default Goblin;
